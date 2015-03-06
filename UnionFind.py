@@ -38,11 +38,13 @@ class UnionFind:
 			self._count -= 1 # decrement the number of components
 			return
 	
+	# returns the component identifier for p.
 	def find_quick(self, p):
 		while (self._id[p] != p):
 			p = self._id[p]
 		return p
 	
+	# joings the components that p and q belong to
 	def union_quick(self, p, q):
 		if (self._id[p] == q):
 			return # nodes are already connected
@@ -53,6 +55,26 @@ class UnionFind:
 		self._id[pRoot] = qRoot
 		self._count -= 1
 		return
+		
+# tests UnionFind on a number of sites specified by size.
+# Uses random to create [p,q] q for each p
+def union_test(size):
+	uf = UnionFind()
+	uf.UF(100)
+	components = []
+	for i in xrange(0,size):
+		c = [i, random.randint(0,size)]
+		components.append(c)
+		
+	for component in components:
+		uf.union_slow(component[0], component[1])
+	
+	print uf._count
+
+def union_quick_test():
+	pass
+	
+
 if __name__ == "__main__":
 	uf = UnionFind()
 	uf.UF(100)
