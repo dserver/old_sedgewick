@@ -42,18 +42,33 @@ namespace ConsoleApplication4
         }
 
         public T remove(int i){
-            T b;
-            return b;
+            int j;
+			T r_val = this.a[i]
+			for (j=this.n-1; j>= i; j--) {
+				this.a[j-1] = this.a[j]
+			}
+			
+			return r_val;
         }
 
         private void resize()
         {
-            T[] b = new T[(this.a.Length * 2)];
-            int i;
-            for (i = 0; i < this.a.Length; i++)
-                b[i] = this.a[i];
-            this.a = b;
-            return;
+			if (this.n == this.a.Length -1 ){ # increase array size
+				T[] b = new T[(this.a.Length * 2)];
+				int i;
+				for (i = 0; i < this.a.Length; i++)
+					b[i] = this.a[i];
+				this.a = b;
+				return;
+			}
+			if (this.a.Length >= this.n * 3) {
+				T[] b = new T[this.n * 2];
+				int x;
+				for (x=0; x < this.n; x++)
+					b[x] = this.a[x];
+				this.a = b;
+				return;
+			}
         }
     }
 }
