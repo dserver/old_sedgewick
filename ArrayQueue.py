@@ -27,7 +27,17 @@ class ArrayQueue:
         self.e = (self.fp + self.n) % len(self.q)
         self.q[self.e] = val
         self.n += 1
-
+    def add_efficient(self, val):
+        if self.n == len(self.q):
+            self.resize_efficient()
+            
+        # one way is to decrement end
+        #self.e = (self.e - 1) % len(self.q)
+        # another way is to add n to fp and take modulo (fp + n) mod len
+        self.e = (self.fp + self.n) % len(self.q)
+        self.q[self.e] = val
+        self.n += 1
+        
     def remove(self):
         ret_val = self.q[self.fp]
         self.q[self.fp] = None
@@ -56,7 +66,7 @@ class ArrayQueue:
         k = 0
         for k in range(0, self.n):
             b.q[k] = self.q[(self.fp + k) % len(self.q)]
-        self.q = b
+        self.q = b.q
         self.fp = 0
         self.e = self.fp + self.n-1
         
@@ -68,8 +78,14 @@ class ArrayQueue:
 
         return s
             
+def test_efficient():
+    q = ArrayQueue.fromnothing()
+    for x in range(1, 10):
+        print q
+        q.add_efficient(str(x))
+    
 
-def test():
+def test_elementary():
     q = ArrayQueue.fromnothing()
     q.add("1")
     q.add("2")
