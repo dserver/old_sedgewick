@@ -5,6 +5,16 @@ using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
 
+/* To help remember bounds checking when splitting a list using n/2 and floor
+for x in range(0, 30):
+	l = [y for y in range(0, x)]
+	print "#############################"
+	print l
+	print str(len(l)/2) + "    n = " + str(len(l))
+	print "0..."+str(len(l)/2 - 1) + "    " + str(len(l)/2) + "..." + str(len(l)-1)
+*/
+
+
 // Use 3.5 on work computer to compile. do:
 // set PATH=%PATH%;C:\Windows\Microsoft.NET\Framework\v3.5
 // then csc.exe Program.cs; ./Program.exe + whatever classes you need
