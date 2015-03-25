@@ -46,6 +46,18 @@ namespace ConsoleApplication4
 			
 			return;
 		}
+		
+		public void add_fast(T new_element, int position){
+			if (actual_size >= max_size)
+				resize();
+			
+			if (i < actual_size/2) { 
+				int y;
+				for (y = front_pointer; y <= (front_pointer + position) % max_size; y = (y+1) % max_size){
+					
+				}
+			}
+		}
 	
 	}
 
